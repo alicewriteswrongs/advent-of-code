@@ -1,4 +1,4 @@
-const { solution } = require("./01")
+const { solution } = require("./part1")
 
 const test = require("ava")
 

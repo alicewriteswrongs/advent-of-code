@@ -7,7 +7,7 @@ const getData = () =>
     .map(str => str.split(" "))
     .map(([range, letter, password]) => [
       range.split("-").map(Number),
-      letter.replace(":", ""),
+      letter.replace(":", "").trim(),
       password
     ])
 
