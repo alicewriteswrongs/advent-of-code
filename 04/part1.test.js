@@ -18,5 +18,5 @@ test("full solution", t => {
   const passports = getData()
   const validPassports = solution(passports)
   t.truthy(validPassports)
-  console.log(validPassports)
+  // console.log(validPassports)
 })
