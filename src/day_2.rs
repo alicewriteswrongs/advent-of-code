@@ -3,6 +3,7 @@ use std::fs;
 struct Position {
     horizontal: u32,
     depth: u32,
+    aim: u32,
 }
 
 impl Position {
@@ -10,6 +11,7 @@ impl Position {
         Position {
             horizontal: 0,
             depth: 0,
+            aim: 0,
         }
     }
 
@@ -25,6 +27,24 @@ impl Position {
             },
             Move::Up(magnitude) => Position {
                 depth: self.depth - magnitude,
+                ..self
+            },
+        }
+    }
+
+    fn make_pt2_move(self, next_move: Move) -> Position {
+        match next_move {
+            Move::Forward(magnitude) => Position {
+                horizontal: self.horizontal + magnitude,
+                depth: self.depth + self.aim * magnitude,
+                ..self
+            },
+            Move::Down(magnitude) => Position {
+                aim: self.aim + magnitude,
+                ..self
+            },
+            Move::Up(magnitude) => Position {
+                aim: self.aim - magnitude,
                 ..self
             },
         }
@@ -67,6 +87,18 @@ pub fn part_one() -> u32 {
         .into_iter()
         .fold(Position::init(), |current_position, next_move| {
             current_position.make_move(next_move)
+        });
+
+    return final_position.horizontal * final_position.depth;
+}
+
+pub fn part_two() -> u32 {
+    let course = get_data();
+
+    let final_position = course
+        .into_iter()
+        .fold(Position::init(), |current_position, next_move| {
+            current_position.make_pt2_move(next_move)
         });
 
     return final_position.horizontal * final_position.depth;
