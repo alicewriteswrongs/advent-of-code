@@ -56,14 +56,28 @@ fn parse_line(line: &str, elf: Elf) -> Result<Elf> {
 pub fn solution() -> Result<()> {
     let lines = get_file_lines()?;
 
-    let elves = parse_file(&lines)?;
+    let mut elves = parse_file(&lines)?;
 
+    // day 1, part 1
     let most_caloric_elf = elves.iter().reduce(cmp::max);
-
     if let Some(calories) = most_caloric_elf {
-        println!("Day 1, part 1: the most calorie-laden elf has {} calories", calories);
-        Ok(())
+        println!(
+            "Day 1, part 1: the most calorie-laden elf has {} calories",
+            calories
+        );
     } else {
-        Err(anyhow!("Something went wrong :/"))
+        return Err(anyhow!("Something went wrong :/"));
     }
+
+    // day 1, part 2
+    elves.sort();
+    elves.reverse();
+    let top_three_elves_calories = elves[0] + elves[1] + elves[2];
+
+    println!(
+        "Day 1, part 2: the top three elves have {} calories",
+        top_three_elves_calories
+    );
+
+    Ok(())
 }
