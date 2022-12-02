@@ -1,5 +1,4 @@
 use anyhow::Result;
-use std::cmp;
 use std::fs;
 
 fn get_file_lines() -> Result<Vec<String>> {
@@ -59,7 +58,7 @@ pub fn solution() -> Result<()> {
     let mut elves = parse_file(&lines)?;
 
     // day 1, part 1
-    let most_caloric_elf = elves.iter().reduce(cmp::max);
+    let most_caloric_elf = elves.iter().max();
     if let Some(calories) = most_caloric_elf {
         println!(
             "Day 1, part 1: the most calorie-laden elf has {} calories",
