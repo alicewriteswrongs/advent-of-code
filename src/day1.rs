@@ -71,8 +71,8 @@ pub fn solution() -> Result<()> {
 
     // day 1, part 2
     elves.sort();
-    elves.reverse();
-    let top_three_elves_calories = elves[0] + elves[1] + elves[2];
+
+    let top_three_elves_calories: i32 = elves.iter().rev().take(3).sum();
 
     println!(
         "Day 1, part 2: the top three elves have {} calories",
