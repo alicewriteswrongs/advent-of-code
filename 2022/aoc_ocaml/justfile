@@ -3,3 +3,6 @@ build:
 
 run exe:
     esy b dune exec {{exe}}
+
+fmt:
+    esy ocamlformat -i *.ml
