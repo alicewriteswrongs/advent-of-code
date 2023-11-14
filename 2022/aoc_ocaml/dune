@@ -1,3 +1,4 @@
 (executable
-  (name aoc2022) ; asking dune to build hello.ml
-   (public_name aoc2022)) ; name of the binary
+  (name ex01)
+  (modules ex01)
+  (libraries core stdio))

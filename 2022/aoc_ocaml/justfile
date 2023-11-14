@@ -1,2 +1,5 @@
 build:
     esy b dune build
+
+run exe:
+    esy b dune exec {{exe}}

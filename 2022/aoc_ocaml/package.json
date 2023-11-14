@@ -1,6 +1,9 @@
 {
   "dependencies": {
-    "ocaml": "4.10.x",
-    "@opam/dune": "*"
+    "@opam/base": "v0.14.3",
+    "@opam/core": "v0.14.1",
+    "@opam/dune": "*",
+    "@opam/stdio": "v0.14.0",
+    "ocaml": "4.10.x"
   }
 }
