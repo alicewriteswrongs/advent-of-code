@@ -98,9 +98,9 @@ fn priority_for_item(item: Item) -> u32 {
 pub fn solution() -> Result<()> {
     let lines = get_file_lines("data/day_3.txt")?;
 
+    // sum of priorities for part 1
     let sum = lines
         .iter()
-        .filter(|line| !line.is_empty())
         .map(|line| {
             let rucksack = Rucksack::new(line);
             priority_for_item(rucksack.get_shared_item())
@@ -108,6 +108,20 @@ pub fn solution() -> Result<()> {
         .sum::<u32>();
 
     println!("day 3, part 1: sum is {}", sum);
+
+    // badge per group and sum of priorities for part 2
+    let mut priorities: Vec<u32> = vec![];
+
+    let elves_in_threes = lines.chunks_exact(3);
+
+    elves_in_threes.map(|group| {
+        let [elf_one, elf_two, elf_tree] = group;
+    })
+
+    
+    while let Some elves
+        .take
+
 
     Ok(())
 }
@@ -137,6 +151,7 @@ mod tests {
                 p
             })
             .sum::<u32>();
+        println!("day 3, part 1: sum is {}", sum);
         assert!(sum == 157);
     }
 }
