@@ -4,6 +4,7 @@ let get_data =
   In_channel.read_lines "./data/day_1.txt" |> List.map ~f:String.strip
 
 type parser_state = Init | ParsingElf of int
+
 type elf = Elf of int
 
 let parse (lines : string list) =
@@ -14,7 +15,7 @@ let parse (lines : string list) =
         if empty then (state, elves)
         else (ParsingElf (Int.of_string line), elves)
     | ParsingElf sum ->
-        if empty then (Init, elves @ [ Elf sum ])
+        if empty then (Init, elves @ [Elf sum])
         else (ParsingElf (Int.of_string line + sum), elves)
   in
   let parse_lines = List.fold ~f:parse_line ~init:(Init, []) in
