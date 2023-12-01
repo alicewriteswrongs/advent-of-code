@@ -2,3 +2,8 @@
   (name ex01)
   (modules ex01)
   (libraries core stdio))
+
+(executable
+  (name ex02)
+  (modules ex02)
+  (libraries core))

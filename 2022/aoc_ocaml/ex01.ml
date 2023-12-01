@@ -19,14 +19,27 @@ let parse (lines : string list) =
         else (ParsingElf (Int.of_string line + sum), elves)
   in
   let parse_lines = List.fold ~f:parse_line ~init:(Init, []) in
-  let get_elves (_, elves) = elves in
-  lines |> parse_lines |> get_elves
+  lines |> parse_lines |> fun (_, elves) -> elves
 
 let elf_to_string (Elf calories) = Int.to_string calories
 
 let main () =
-  let _result =
-    get_data |> parse |> List.map ~f:elf_to_string |> List.map ~f:print_endline
+  let elves = get_data |> parse |> List.sort ~compare:Poly.compare in
+  let _part_one =
+    elves
+    |> List.last
+    |> Option.map ~f:elf_to_string
+    |> Option.map ~f:print_endline
+  in
+  let _part_two =
+    elves
+    |> List.rev
+    |> fun elves ->
+    List.take elves 3
+    |> List.map ~f:(fun (Elf calories) -> calories)
+    |> List.fold ~f:( + ) ~init:0
+    |> Int.to_string
+    |> print_endline
   in
   ()
 
