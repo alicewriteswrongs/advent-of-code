@@ -11,8 +11,8 @@ mod part_1 {
     use super::get_file_lines;
     use anyhow::Result;
 
-    fn parse_line(line: &String) -> i32 {
-        let nums: Vec<char> = line.chars().filter(|c| c.is_digit(10)).collect();
+    fn parse_line(line: &str) -> i32 {
+        let nums: Vec<char> = line.chars().filter(|c| c.is_ascii_digit()).collect();
 
         // just panic if it doesn't work
         let first = nums.first().expect("this should be present");
@@ -45,8 +45,8 @@ mod part_2 {
     use super::get_file_lines;
     use anyhow::Result;
 
-    fn parse_line(line: &String) -> i32 {
-        let nums: Vec<char> = line.chars().filter(|c| c.is_digit(10)).collect();
+    fn parse_line(line: &str) -> i32 {
+        let nums: Vec<char> = line.chars().filter(|c| c.is_ascii_digit()).collect();
 
         // just panic if it doesn't work
         let first = nums.first().expect("this should be present");
