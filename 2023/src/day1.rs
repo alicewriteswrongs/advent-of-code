@@ -88,8 +88,8 @@ mod part_2 {
         ]);
 
         let first = get_first_number(&name_to_number, line).expect("should get a first num");
-        let reversed = line.chars().rev().collect::<String>();
 
+        // this is a vicious hack, I know
         let name_to_number = HashMap::from([
             ("eno", '1'),
             ("owt", '2'),
@@ -101,6 +101,7 @@ mod part_2 {
             ("thgie", '8'),
             ("enin", '9'),
         ]);
+        let reversed = line.chars().rev().collect::<String>();
         let last = get_first_number(&name_to_number, &reversed).expect("should get a second num");
         format!("{}{}", first, last).parse().expect("should parse")
     }
